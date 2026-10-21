@@ -1,0 +1,773 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
+
+/* =========================
+   基本設定
+========================= */
+:root {
+  --bg: #09080d;
+  --panel: #15111c;
+  --pink: #ff2e93;
+  --purple: #9c4dff;
+  --white: #f8f5ff;
+  --muted: #aaa3b8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: "Noto Sans JP", sans-serif;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--pink);
+  color: white;
+}
+
+/* =========================
+   上部メニュー
+========================= */
+.topbar {
+  height: 72px;
+  padding: 0 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(9, 8, 13, 0.95);
+  border-bottom: 1px solid #302538;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(12px);
+}
+
+.logo {
+  font-family: "Anton", Impact, sans-serif;
+  font-size: 27px;
+  letter-spacing: 1px;
+}
+
+.logo span {
+  color: var(--pink);
+}
+
+.topbar nav {
+  display: flex;
+  gap: 30px;
+}
+
+.topbar nav a {
+  color: #c7bfd2;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  transition: color 0.2s;
+}
+
+.topbar nav a:hover {
+  color: var(--pink);
+}
+
+/* =========================
+   メインビジュアル
+========================= */
+.hero {
+  min-height: 650px;
+  height: min(790px, calc(100vh - 72px));
+  padding: 75px 9% 55px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background:
+    radial-gradient(
+      ellipse at 78% 43%,
+      rgba(156, 77, 255, 0.27),
+      transparent 34%
+    ),
+    radial-gradient(
+      ellipse at 15% 80%,
+      rgba(255, 46, 147, 0.17),
+      transparent 35%
+    ),
+    linear-gradient(135deg, #100c19, #09080d 70%);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.14;
+  background-image:
+    linear-gradient(#8e7aab 1px, transparent 1px),
+    linear-gradient(90deg, #8e7aab 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 90%);
+}
+
+.hero-kicker {
+  color: var(--pink);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-family: "Anton", Impact, sans-serif;
+  font-size: clamp(90px, 16vw, 210px);
+  line-height: 0.82;
+  letter-spacing: -3px;
+  margin: 35px 0 45px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 0 50px rgba(255, 46, 147, 0.12);
+}
+
+.hero h1 span:not(.outline) {
+  color: var(--pink);
+}
+
+.hero h1 .outline {
+  color: transparent;
+  -webkit-text-stroke: 2px #f8f5ff;
+  text-shadow: 6px 6px 0 rgba(156, 77, 255, 0.35);
+}
+
+.hero-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-bottom p {
+  color: #bdb4ca;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.hero-button {
+  display: inline-block;
+  padding: 14px 24px;
+  background: var(--pink);
+  color: white;
+  font-size: 13px;
+  font-weight: 900;
+  box-shadow: 5px 5px 0 var(--purple);
+  transition: 0.2s;
+}
+
+.hero-button:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0 var(--purple);
+}
+
+.hero-sticker {
+  position: absolute;
+  right: 10%;
+  top: 23%;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: var(--purple);
+  color: white;
+  font-family: "Anton", Impact, sans-serif;
+  font-size: 24px;
+  line-height: 0.95;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transform: rotate(12deg);
+  box-shadow: 0 0 45px rgba(156, 77, 255, 0.4);
+  z-index: 1;
+}
+
+.hero-line {
+  height: 5px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--pink),
+    var(--purple),
+    transparent
+  );
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+/* =========================
+   セクション共通
+========================= */
+.section {
+  padding: 110px 9%;
+}
+
+.section-heading {
+  margin-bottom: 45px;
+}
+
+.eyebrow {
+  color: var(--pink);
+  font-family: "Anton", Impact, sans-serif;
+  letter-spacing: 3px;
+  font-size: 14px;
+}
+
+.section-heading h2 {
+  font-family: "Anton", Impact, sans-serif;
+  font-size: clamp(48px, 8vw, 88px);
+  line-height: 1.1;
+  margin-top: 12px;
+  letter-spacing: 1px;
+}
+
+.section-heading h2 span {
+  color: var(--pink);
+}
+
+.section-description {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 3px;
+  margin-top: 10px;
+}
+
+/* =========================
+   概要・会場
+========================= */
+.about {
+  background: #100d16;
+  border-bottom: 1px solid #292230;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 55px;
+  align-items: center;
+}
+
+.pink-label {
+  color: var(--pink);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+.about-main h3 {
+  font-size: clamp(25px, 3vw, 38px);
+  font-weight: 900;
+  line-height: 1.7;
+}
+
+.about-text {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 20px;
+  max-width: 430px;
+}
+
+.info-card {
+  padding: 30px;
+  border: 1px solid #3b3048;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(156, 77, 255, 0.1),
+      transparent 60%
+    ),
+    #15111c;
+  box-shadow: 10px 10px 0 rgba(255, 46, 147, 0.12);
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #332a3d;
+}
+
+.info-row span {
+  color: var(--pink);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.info-row strong {
+  font-size: 14px;
+  text-align: right;
+}
+
+.info-note {
+  margin-top: 18px;
+  color: #8f869d;
+  font-size: 10px;
+}
+
+/* =========================
+   出演順
+========================= */
+.order-section {
+  background:
+    radial-gradient(
+      ellipse at 100% 10%,
+      rgba(156, 77, 255, 0.11),
+      transparent 35%
+    ),
+    var(--bg);
+}
+
+.lineup-list {
+  border-top: 1px solid #39303f;
+}
+
+.lineup-item {
+  display: grid;
+  grid-template-columns: 75px 1fr 90px 25px;
+  align-items: center;
+  gap: 15px;
+  padding: 19px 12px;
+  border-bottom: 1px solid #302735;
+  transition: 0.2s;
+}
+
+.lineup-item:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 46, 147, 0.15),
+    rgba(156, 77, 255, 0.06)
+  );
+  padding-left: 24px;
+}
+
+.lineup-number {
+  color: var(--pink);
+  font-family: "Anton", Impact, sans-serif;
+  font-size: 28px;
+}
+
+.lineup-name {
+  font-size: clamp(15px, 2vw, 22px);
+  font-weight: 900;
+  overflow-wrap: anywhere;
+}
+
+.lineup-time {
+  color: #b5aabe;
+  font-family: "Anton", Impact, sans-serif;
+  font-size: 18px;
+  text-align: right;
+  letter-spacing: 1px;
+}
+
+.lineup-arrow {
+  color: var(--purple);
+  font-size: 22px;
+  text-align: right;
+  transition: 0.2s;
+}
+
+.lineup-item:hover .lineup-arrow {
+  color: var(--pink);
+  transform: translate(3px, -3px);
+}
+
+.special-item {
+  padding: 17px 20px;
+  margin: 16px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  background: #191420;
+  border-left: 4px solid #6d6278;
+  color: #bcb2c8;
+  font-size: 12px;
+}
+
+.special-item strong {
+  color: white;
+}
+
+.comedy {
+  background: rgba(156, 77, 255, 0.12);
+  border-left-color: var(--purple);
+}
+
+.last-band {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 46, 147, 0.12),
+    transparent
+  );
+  border-bottom: 1px solid var(--pink);
+}
+
+.schedule-note {
+  color: #92889e;
+  font-size: 11px;
+  margin-top: 20px;
+}
+
+/* =========================
+   バンド紹介一覧
+========================= */
+.bands-section {
+  background: #100d16;
+  border-top: 1px solid #302536;
+}
+
+.band-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.band-card {
+  background: var(--panel);
+  border: 1px solid #302638;
+  min-width: 0;
+  transition:
+    transform 0.25s,
+    border-color 0.25s,
+    box-shadow 0.25s;
+  scroll-margin-top: 90px;
+}
+
+.band-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--pink);
+  box-shadow: 0 12px 35px rgba(255, 46, 147, 0.09);
+}
+
+/* バンド写真 */
+.band-photo {
+  position: relative;
+  height: 260px;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 46, 147, 0.25),
+      transparent 50%
+    ),
+    #21162b;
+}
+
+.band-photo img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio:4/3;
+  object-fit:contain;
+  display: block;
+  transition: transform 0.5s;
+}
+
+.band-card:hover .band-photo img {
+  transform: scale(1.05);
+}
+
+.band-photo::after {
+  content: "";
+  position: absolute;
+  inset: 50% 0 0;
+  background: linear-gradient(
+    transparent,
+    rgba(9, 8, 13, 0.35)
+  );
+  pointer-events: none;
+}
+
+.photo-number {
+  position: absolute;
+  z-index: 1;
+  left: 17px;
+  top: 14px;
+  color: white;
+  font-family: "Anton", Impact, sans-serif;
+  font-size: 40px;
+  line-height: 1;
+  text-shadow: 2px 2px 15px #09080d;
+}
+
+/* バンド情報 */
+.band-content {
+  padding: 25px;
+}
+
+.band-time {
+  color: var(--pink);
+  font-family: "Anton", Impact, sans-serif;
+  letter-spacing: 2px;
+  font-size: 12px;
+}
+
+.band-content h3 {
+  font-size: clamp(23px, 3vw, 32px);
+  line-height: 1.35;
+  margin: 8px 0 14px;
+  overflow-wrap: anywhere;
+}
+
+.band-members {
+  color: #b6adbf;
+  font-size: 12px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #362b3d;
+  overflow-wrap: anywhere;
+}
+
+/* セットリスト */
+.setlist-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--pink);
+  font-family: "Anton", Impact, sans-serif;
+  letter-spacing: 2px;
+  margin-top: 18px;
+}
+
+.setlist-title span {
+  color: var(--purple);
+  font-size: 20px;
+}
+
+.band-content ol {
+  list-style: none;
+  counter-reset: song;
+  margin-top: 8px;
+}
+
+.band-content li {
+  counter-increment: song;
+  padding: 8px 0;
+  border-bottom: 1px solid #2a222f;
+  color: #e2dce9;
+  font-size: 13px;
+}
+
+.band-content li::before {
+  content: "0" counter(song) "  /  ";
+  color: #8f829f;
+  font-size: 11px;
+  margin-right: 7px;
+}
+
+/* 12組目の特別デザイン */
+.featured-card {
+  border-color: var(--pink);
+  box-shadow: 0 0 30px rgba(255, 46, 147, 0.1);
+}
+
+.featured-card .band-photo {
+  background: linear-gradient(135deg, #6d1649, #30125b);
+}
+
+.new-stamp {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: var(--pink);
+  color: white;
+  font-family: "Anton", Impact, sans-serif;
+  font-size: 18px;
+  line-height: 1;
+  transform: rotate(10deg);
+  box-shadow: 0 0 22px rgba(255, 46, 147, 0.5);
+}
+
+/* =========================
+   フッター
+========================= */
+.footer {
+  text-align: center;
+  padding: 85px 20px 35px;
+  background:
+    radial-gradient(
+      ellipse at center top,
+      rgba(156, 77, 255, 0.18),
+      transparent 55%
+    ),
+    #09080d;
+  border-top: 1px solid #35263e;
+}
+
+.footer-small {
+  color: var(--pink);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.footer-title {
+  font-family: "Anton", Impact, sans-serif;
+  font-size: clamp(42px, 9vw, 90px);
+  line-height: 1.3;
+  margin: 12px 0 28px;
+}
+
+.footer-title span {
+  color: var(--pink);
+}
+
+.copyright {
+  color: #756b80;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+/* =========================
+   スマホ表示
+========================= */
+@media (max-width: 700px) {
+  .topbar {
+    height: 62px;
+    padding: 0 5%;
+  }
+
+  .logo {
+    font-size: 23px;
+  }
+
+  .topbar nav {
+    gap: 12px;
+  }
+
+  .topbar nav a {
+    font-size: 9px;
+    letter-spacing: 0.5px;
+  }
+
+  .hero {
+    min-height: 600px;
+    height: auto;
+    padding: 95px 7% 65px;
+  }
+
+  .hero h1 {
+    font-size: clamp(82px, 20vw, 145px);
+    margin: 38px 0;
+  }
+
+  .hero-sticker {
+    width: 78px;
+    height: 78px;
+    font-size: 17px;
+    right: 7%;
+    top: 16%;
+  }
+
+  .hero-bottom {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .section {
+    padding: 75px 6%;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .info-card {
+    padding: 20px;
+  }
+
+  .lineup-item {
+    grid-template-columns: 43px minmax(0, 1fr) 60px 16px;
+    gap: 8px;
+    padding: 16px 4px;
+  }
+
+  .lineup-number {
+    font-size: 23px;
+  }
+
+  .lineup-name {
+    font-size: 14px;
+  }
+
+  .lineup-time {
+    font-size: 14px;
+  }
+
+  .lineup-arrow {
+    font-size: 17px;
+  }
+
+  .special-item {
+    font-size: 10px;
+    padding: 14px 10px;
+  }
+
+  .band-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .band-photo {
+    height: 240px;
+  }
+
+  .band-content {
+    padding: 21px;
+  }
+}
+
+/* 動きを少なくする設定に対応 */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.footer-small {
+  color: #a997ff;
+}
+
