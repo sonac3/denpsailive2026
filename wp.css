@@ -771,3 +771,18 @@ a {
   color: #a997ff;
 }
 
+.opening-item {
+  display: grid !important;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+}
+
+.opening-item span {
+  text-align: left;
+}
+
+.opening-item strong {
+  text-align: right;
+}
